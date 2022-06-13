@@ -13,6 +13,9 @@
   display: flex;
   flex-direction: column;
 }
+.app-container.disabled {
+  opacity: 0.5;
+}
 h1 {
   margin: 0;
   margin-bottom: 1rem;
@@ -50,5 +53,4 @@ button {
   padding: 0 0.5rem 0 0.5rem;
   border: 1px cadetblue solid;
   border-radius: 0.5rem;
-  transform: translate(0.5s);
 }

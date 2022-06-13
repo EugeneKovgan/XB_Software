@@ -20,6 +20,7 @@ function init() {
   let tags
   !localStorage.tags ? tags = [] : tags = JSON.parse(localStorage.getItem('tags'))
 
+  const appContainer = document.querySelector('.app-container')
   const addBtn = document.querySelector('.add-btn')
   const addTagsInput = document.querySelector('.input')
   const tagsList = document.querySelector('.tags-list')
@@ -32,8 +33,8 @@ function init() {
   const createItem = (elem, ind) => {
     return `
     <div class="tag-item" id=${ind}>
-    <div class="description">${elem.descriptions}</div>
-    <button class="btn-del">X</button>
+      <div class="description">${elem.descriptions}</div>
+      <button class="btn-del">X</button>
     </div>
     `
   }
@@ -53,7 +54,6 @@ function init() {
   }
 
   addTagsInput.addEventListener('input', () => {
-    console.log('gg')
     if (addTagsInput.value.length > 3) {
       addBtn.removeAttribute('disabled')
     }
@@ -77,8 +77,9 @@ function init() {
     }
   })
 
-  readonlyBtn.addEventListener('click', (e) => {
+  readonlyBtn.addEventListener('click', () => {
     addTagsInput.toggleAttribute('disabled')
+    appContainer.classList.toggle('disabled')
     let items = document.querySelectorAll('.tag-item')
     items.forEach((el) => {
       let currentElement = el.children
